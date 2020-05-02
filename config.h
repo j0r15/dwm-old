@@ -191,8 +191,11 @@ static Key keys[] = {
 	{ 0, XF86XK_MonBrightnessDown,    spawn,          SHCMD("notify-send Darker && sudo brightnessctl s 1000-") },
 	{ 0, XF86XK_AudioMute,		spawn,		SHCMD("pactl set-sink-volume alsa_output.pci-0000_00_1b.0.analog-stereo 0% ; notify-send Muted") },
 /*        { 0, XF86XK_AudioMute,          spawn,          SHCMD("amixer sset Master toggle ; pkill -RTMIN+10 dwmblocks") },*/
-	{ 0, XF86XK_AudioRaiseVolume,	spawn,		SHCMD(" pactl set-sink-volume alsa_output.pci-0000_00_1b.0.analog-stereo +10% ; notify-send Louder") },
-	{ 0, XF86XK_AudioLowerVolume,	spawn,		SHCMD(" pactl set-sink-volume alsa_output.pci-0000_00_1b.0.analog-stereo -10% ; notify-send Softer") },
+	{ 0, XF86XK_AudioRaiseVolume,	spawn,		SHCMD(" pulsemixer --change-volume +10 ; notify-send Louder") },
+	{ 0, XF86XK_AudioLowerVolume,	spawn,		SHCMD(" pulsemixer --change-volume -10 ; notify-send Softer") },
+/*        { 0, XF86XK_AudioRaiseVolume,   spawn,          SHCMD(" pactl set-sink-volume alsa_output.pci-0000_00_1b.0.analog-stereo +10% ; notify-send Louder") },
+        { 0, XF86XK_AudioLowerVolume,   spawn,          SHCMD(" pactl set-sink-volume alsa_output.pci-0000_00_1b.0.analog-stereo -10% ; notify-send Softer") },*/
+
 	{ 0, XF86XK_AudioPrev,		spawn,		SHCMD("playerctl previous") },
 	{ 0, XF86XK_AudioNext,		spawn,		SHCMD("playerctl next") },
 /*	{ 0, XF86XK_AudioPause,		spawn,		SHCMD("playerctl pause") },*/
