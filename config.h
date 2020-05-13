@@ -169,11 +169,11 @@ static Key keys[] = {
 	{ MODKEY,			XK_F4,		spawn,		SHCMD("[ \"$(printf \"No\\nYes\" | dmenu -i -nb darkred -sb red -sf white -nf gray -p \"Hibernate computer?\")\" = Yes ] && sudo -A zzz") },
 /*	{ MODKEY,			XK_F5,		xrdb,		{.v = NULL } },*/
 /*	{ MODKEY,			XK_F6,		spawn,		SHCMD("torwrap") },*/
-	{ MODKEY,			XK_F7,		spawn,		SHCMD("td-toggle") },
-	{ MODKEY,			XK_F8,		spawn,		SHCMD("mailsync") },
+/*	{ MODKEY,			XK_F7,		spawn,		SHCMD("td-toggle") },*/
+/*	{ MODKEY,			XK_F8,		spawn,		SHCMD("mailsync") },*/
 	{ MODKEY,			XK_F9,		spawn,		SHCMD("dmenumount") },
 	{ MODKEY,			XK_F10,		spawn,		SHCMD("dmenuumount") },
-	/* { MODKEY,			XK_F11,		spawn,		SHCMD("") }, */
+	 { MODKEY,			XK_F11,		spawn,		SHCMD("displaypick") },
 	/* { MODKEY,			XK_F12,		spawn,		SHCMD("") }, */
 	{ MODKEY,			XK_space,	zoom,		{0} },
 	{ MODKEY|ShiftMask,		XK_space,	togglefloating,	{0} },
