@@ -141,6 +141,7 @@ static Key keys[] = {
 	{ MODKEY,			XK_z,		incrgaps,	{.i = -20 } },
 	{ MODKEY|ShiftMask,		XK_z,		incrgaps,	{.i = +20 } },
 	{ MODKEY|ShiftMask,		XK_x,		spawn,		SHCMD("[ \"$(printf \"No\\nYes\" | dmenu -i -nb darkred -sb red -sf white -nf gray -p \"Shutdown computer?\")\" = Yes ] && shutdown -h now") },
+	{ MODKEY|ShiftMask,		XK_c,		spawn,		SHCMD("showclip") },
 	{ MODKEY|ShiftMask,		XK_v,		spawn,		SHCMD("killall compton || compton -b -o .9") },
 	{ MODKEY,			XK_b,		togglebar,	{0} },
         { MODKEY|ShiftMask,             XK_b,           spawn,          SHCMD("nitrogen ~/backgrounds --random --set-zoom-fill ") },
