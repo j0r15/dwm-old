@@ -41,7 +41,8 @@ static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
 	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
-
+	{ "Spotify",  NULL,       NULL,       1 << 6,       1,           -1 },
+	{ "Moolticute",  NULL,       NULL,    0,    	    1,           0 },
 };
 
 /* layout(s) */
@@ -55,7 +56,7 @@ static const Layout layouts[] = {
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "|M|",      centeredmaster },
 	{ "[+]",      gaplessgrid },
-/*	{ "[M]",      monocle },*/
+	/*{ "[S]",      solo },*/
 
 };
 
@@ -76,8 +77,7 @@ static const Layout layouts[] = {
 	/* { MOD, XK_x,     ACTION##stack, {.i = -1 } }, */
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
-#define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
-
+#define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } } 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
@@ -87,7 +87,7 @@ static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34
 static const char *webbrowser[] = { "firefox", NULL};
 static const char *mailclient[] = { "thunderbird", NULL};
 /*static const char *ranger[] = {"st", "-e", "ranger", NULL};*/
-/*static const char *nmtui[] = { "st", "-t", "nmtui", "-g", "120x34", "-e", "nmtui", NULL };*/
+static const char *nmtui[] = { "st", "-t", "nmtui", "-g", "120x34", "-e", "nmtui", NULL };
 
 
 #include <X11/XF86keysym.h>
@@ -118,7 +118,7 @@ static Key keys[] = {
 	{ MODKEY,			XK_Tab,		view,		{0} },
 	{ MODKEY,			XK_q,		killclient,	{0} },
 	{ MODKEY,			XK_w,		spawn,		{.v = webbrowser } },
-	{ MODKEY|ShiftMask,		XK_w,		spawn,		SHCMD("st -e nmtui") }, /* Networkmanager TUI*/
+	{ MODKEY|ShiftMask,		XK_w,		spawn,		{.v = nmtui } }, /* Networkmanager TUI*/
 	{ MODKEY,			XK_e,		spawn,		{.v = mailclient } },
 	{ MODKEY,			XK_r,		spawn,		SHCMD("st -e ranger") },
         { MODKEY|ShiftMask,             XK_r,           spawn,          SHCMD("st -e sudo ranger") },
@@ -165,21 +165,21 @@ static Key keys[] = {
 
 	{ MODKEY,			XK_F1,		spawn,		SHCMD("flatpak run org.gajim.Gajim") },
 	{ MODKEY,			XK_F2,		spawn,		SHCMD("nmcli radio wifi on || nmcli radio wifi off") },
-/*	{ MODKEY,			XK_F3,		spawn,		SHCMD("displayselect") },*/
-	{ MODKEY,			XK_F4,		spawn,		SHCMD("[ \"$(printf \"No\\nYes\" | dmenu -i -nb darkred -sb red -sf white -nf gray -p \"Hibernate computer?\")\" = Yes ] && sudo -A zzz") },
+	{ MODKEY,			XK_F3,		spawn,		SHCMD("displayselect") },
+/*	{ MODKEY,			XK_F4,		spawn,		SHCMD("[ \"$(printf \"No\\nYes\" | dmenu -i -nb darkred -sb red -sf white -nf gray -p \"Hibernate computer?\")\" = Yes ] && sudo -A zzz") },*/
 /*	{ MODKEY,			XK_F5,		xrdb,		{.v = NULL } },*/
-/*	{ MODKEY,			XK_F6,		spawn,		SHCMD("torwrap") },*/
-/*	{ MODKEY,			XK_F7,		spawn,		SHCMD("td-toggle") },*/
-/*	{ MODKEY,			XK_F8,		spawn,		SHCMD("mailsync") },*/
+/*	{ MODKEY,			XK_F6,		spawn,		SHCMD("") },*/
+	{ MODKEY,			XK_F7,		spawn,		SHCMD("slock") },
+/*	{ MODKEY,			XK_F8,		spawn,		SHCMD("displayselect") },*/
 	{ MODKEY,			XK_F9,		spawn,		SHCMD("dmenumount") },
 	{ MODKEY,			XK_F10,		spawn,		SHCMD("dmenuumount") },
-	 { MODKEY,			XK_F11,		spawn,		SHCMD("displaypick") },
-	/* { MODKEY,			XK_F12,		spawn,		SHCMD("") }, */
+	{ MODKEY,			XK_F11,		spawn,		SHCMD("displaypick") },
+	{ MODKEY,			XK_F12,		spawn,		SHCMD("dmenuwindowselect") },
 	{ MODKEY,			XK_space,	zoom,		{0} },
 	{ MODKEY|ShiftMask,		XK_space,	togglefloating,	{0} },
 
 	{ 0,				XK_Print,	spawn,		SHCMD("scrot '%Y-%m-%d_$wx$h_scrot.png' -e 'mv $f ~/Pictures/Screenshots/' && notify-send ScreenShot Taken") },
-	{ ShiftMask,			XK_Print,	spawn,		SHCMD("scrot -s '%Y-%m-%d_$wx$h_scrot.png' -e 'mv $f ~/Pictures/Screenshots/' && notify-send ScreenShot Taken") },
+	{ ShiftMask,			XK_Print,	spawn,		SHCMD("maimpick") },
 	{ MODKEY,			XK_Print,	spawn,		SHCMD("dmenurecord") },
 	{ MODKEY|ShiftMask,		XK_Print,	spawn,		SHCMD("dmenurecord kill") },
 	{ MODKEY,			XK_Delete,	spawn,		SHCMD("dmenurecord kill") },
@@ -232,7 +232,7 @@ static Key keys[] = {
 	 { MODKEY,		  	 XK_h,      incrigaps,      {.i = +5 } },
 	 { MODKEY,           		 XK_l,      incrigaps,      {.i = -5 } },
 */
-	 { MODKEY|ShiftMask,    	 XK_0,      defaultgaps,    {0} },
+/*	 { MODKEY|ShiftMask,    	 XK_0,      defaultgaps,    {0} },*/
 /*	 { MODKEY,                       XK_p,      incrihgaps,     {.i = +5 } },
 	 { MODKEY,                       XK_o,      incrihgaps,     {.i = -5 } },
 	 { MODKEY|ControlMask,           XK_p,      incrivgaps,     {.i = +5 } },
