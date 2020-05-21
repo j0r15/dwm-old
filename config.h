@@ -41,8 +41,6 @@ static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
 	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
-	{ "Spotify",  NULL,       NULL,       1 << 6,       1,           -1 },
-	{ "Moolticute",  NULL,       NULL,    0,    	    1,           0 },
 };
 
 /* layout(s) */
@@ -77,7 +75,7 @@ static const Layout layouts[] = {
 	/* { MOD, XK_x,     ACTION##stack, {.i = -1 } }, */
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
-#define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } } 
+#define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
@@ -178,8 +176,9 @@ static Key keys[] = {
 	{ MODKEY,			XK_space,	zoom,		{0} },
 	{ MODKEY|ShiftMask,		XK_space,	togglefloating,	{0} },
 
-	{ 0,				XK_Print,	spawn,		SHCMD("scrot '%Y-%m-%d_$wx$h_scrot.png' -e 'mv $f ~/Pictures/Screenshots/' && notify-send ScreenShot Taken") },
-	{ ShiftMask,			XK_Print,	spawn,		SHCMD("maimpick") },
+/*	{ 0,				XK_Print,	spawn,		SHCMD("scrot '%Y-%m-%d_$wx$h_scrot.png' -e 'mv $f ~/Pictures/Screenshots/' && notify-send ScreenShot Taken") },*/
+	{ 0,				XK_Print,	spawn,		SHCMD("maimpick && notify-send ScreenShot Taken") },
+/*	{ ShiftMask,			XK_Print,	spawn,		SHCMD("maimpick") },*/
 	{ MODKEY,			XK_Print,	spawn,		SHCMD("dmenurecord") },
 	{ MODKEY|ShiftMask,		XK_Print,	spawn,		SHCMD("dmenurecord kill") },
 	{ MODKEY,			XK_Delete,	spawn,		SHCMD("dmenurecord kill") },
