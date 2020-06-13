@@ -2,6 +2,7 @@
 
 /* appearance */
 static const unsigned int gappih    = 10;       /* horiz inner gap between windows */
+// static const int floatborderpx = 3;
 static const unsigned int gappiv    = 10;       /* vert inner gap between windows */
 static const unsigned int gappoh    = 10;       /* horiz outer gap between windows and screen edge */
 static const unsigned int gappov    = 10;       /* vert outer gap between windows and screen edge */
@@ -38,9 +39,11 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+  	/* class      instance    title       tags mask     isfloating   monitor    float x,y,w,h         floatborderpx*/
+  	{ "Gimp",     NULL,       NULL,       0,            1,           -1,        50,50,500,500,        3 },
+    { "Firefox",  NULL,       NULL,       1 << 8,       0,           -1,        50,50,500,500,        3 },
+    { "moolticute",  NULL,    NULL,       1 << 6,       1,           -1,        50,50,500,300,        3 },
+    // { "scratchpad",       NULL,       NULL,       0,            1,           -1,        50,50,500,300,        3 },
 };
 
 /* layout(s) */
@@ -153,10 +156,10 @@ static Key keys[] = {
         { MODKEY,                       XK_h,           setmfact,       {.f = -0.05} },
         { MODKEY,                       XK_l,           setmfact,       {.f = +0.05} },
 
-/*	{ MODKEY,			XK_comma,	spawn,		SHCMD("mpc prev") },
-	{ MODKEY|ShiftMask,		XK_comma,	spawn,		SHCMD("mpc seek 0%") },
-	{ MODKEY,			XK_period,	spawn,		SHCMD("mpc next") },
-	{ MODKEY|ShiftMask,		XK_period,	spawn,		SHCMD("mpc repeat") },*/
+	{ MODKEY,			XK_comma,	spawn,		SHCMD("playerctl previous") },
+/*	{ MODKEY|ShiftMask,		XK_comma,	spawn,		SHCMD("mpc seek 0%") },*/
+	{ MODKEY,			XK_period,	spawn,		SHCMD("playerctl next") },
+/*	{ MODKEY|ShiftMask,		XK_period,	spawn,		SHCMD("mpc repeat") },*/
 
 	{ MODKEY,			XK_Page_Up,	shiftview,	{ .i = -1 } },
 	{ MODKEY,			XK_Page_Down,	shiftview,	{ .i = 1 } },
