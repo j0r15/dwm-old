@@ -38,9 +38,11 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+  	/* class      instance    title       tags mask     isfloating   monitor    float x,y,w,h         floatborderpx*/
+  	{ "Gimp",     NULL,       NULL,       0,            1,           -1,        50,50,500,500,        5 },
+    { "Firefox",  NULL,       NULL,       1 << 8,       0,           -1,        50,50,500,500,        5 },
+    { "Spotify",  NULL,       NULL,       1 << 4,       1,           -1,        50%-600,50%-500,600,500,        5 },
+  	{ "Spotify",  NULL,       NULL,       1 << 4,       1,           -1,        50%-600,50%-500,600,500,        5 },
 };
 
 /* layout(s) */
@@ -162,7 +164,7 @@ static Key keys[] = {
 	{ MODKEY,			XK_Page_Down,	shiftview,	{ .i = 1 } },
 	{ MODKEY,			XK_Insert,	spawn,		SHCMD("notify-send \"📋 Clipboard contents:\" \"$(xclip -o -selection clipboard)\"") },
 
-	{ MODKEY,			XK_F1,		spawn,		SHCMD("flatpak run org.gajim.Gajim") },
+	{ MODKEY,			XK_F1,		spawn,		SHCMD("sysact") },
 	{ MODKEY,			XK_F2,		spawn,		SHCMD("nmcli radio wifi on || nmcli radio wifi off") },
 	{ MODKEY,			XK_F3,		spawn,		SHCMD("displayselect") },
 /*	{ MODKEY,			XK_F4,		spawn,		SHCMD("[ \"$(printf \"No\\nYes\" | dmenu -i -nb darkred -sb red -sf white -nf gray -p \"Hibernate computer?\")\" = Yes ] && sudo -A zzz") },*/
