@@ -12,12 +12,12 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int vertpad            = 0;       /* vertical padding of bar */
 static const int sidepad            = 0;       /* horizontal padding of bar */
-static const char *fonts[]          = { "HurmitNerdFont:size=8", "Noto Mono:style=Regular:size=30:antialias=true", "monospace:size=10" };
+static const char *fonts[]          = { "HurmitNerdFont:size=10", "Noto Mono:style=Regular:size=30:antialias=true", "monospace:size=10" };
 /*static const char *fonts[]          = { "Jam\-icons:style=Regular", "HurmitNerdFont:size=8", "monospace:size=10"};*/
 /*static const char *fonts[]          = { "-wuncon-siji-medium-r-normal--0-0-75-75-c-0-iso10646-1" "," "HurmitNerdFont:size=8" "," "monospace:size=10"};*/
 /*static const char *fonts[]          = { "monospace:size=10", "Noto Color Emoji:Regular:pixelsize=10:antialias=true:autohint=true"};*/
 /*static char dmenufont[]       = "monospace:size=10";*/
-static char dmenufont[]       = "HurmitNerdFont:size=10";
+static char dmenufont[]       = "HurmitNerdFont:size=12";
 static char normbgcolor[]           = "#222222";
 static char normbordercolor[]       = "#444444";
 static char normfgcolor[]           = "#bbbbbb";
@@ -38,9 +38,11 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+  	/* class      instance    title       tags mask     isfloating   monitor    float x,y,w,h         floatborderpx*/
+  	{ "Gimp",     NULL,       NULL,       0,            1,           -1,        50,50,500,500,        5 },
+    { "Firefox",  NULL,       NULL,       1 << 8,       0,           -1,        50,50,500,500,        5 },
+    { "Spotify",  NULL,       NULL,       1 << 4,       1,           -1,        50%-600,50%-500,600,500,        5 },
+  	{ "Spotify",  NULL,       NULL,       1 << 4,       1,           -1,        50%-600,50%-500,600,500,        5 },
 };
 
 /* layout(s) */
@@ -162,7 +164,7 @@ static Key keys[] = {
 	{ MODKEY,			XK_Page_Down,	shiftview,	{ .i = 1 } },
 	{ MODKEY,			XK_Insert,	spawn,		SHCMD("notify-send \"📋 Clipboard contents:\" \"$(xclip -o -selection clipboard)\"") },
 
-	{ MODKEY,			XK_F1,		spawn,		SHCMD("flatpak run org.gajim.Gajim") },
+	{ MODKEY,			XK_F1,		spawn,		SHCMD("sysact") },
 	{ MODKEY,			XK_F2,		spawn,		SHCMD("nmcli radio wifi on || nmcli radio wifi off") },
 	{ MODKEY,			XK_F3,		spawn,		SHCMD("displayselect") },
 /*	{ MODKEY,			XK_F4,		spawn,		SHCMD("[ \"$(printf \"No\\nYes\" | dmenu -i -nb darkred -sb red -sf white -nf gray -p \"Hibernate computer?\")\" = Yes ] && sudo -A zzz") },*/
@@ -221,7 +223,7 @@ static Key keys[] = {
 	/* { MODKEY,                       XK_space,  setlayout,      {0} }, */
 
 	 { MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
-	 { MODKEY,                       XK_period, focusmon,       {.i = +1 } }, 
+	 { MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	/* { MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } }, */
 	/* { MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } }, */
 
