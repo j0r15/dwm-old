@@ -12,12 +12,12 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int vertpad            = 0;       /* vertical padding of bar */
 static const int sidepad            = 0;       /* horizontal padding of bar */
-static const char *fonts[]          = { "HurmitNerdFont:size=8", "Noto Mono:style=Regular:size=30:antialias=true", "monospace:size=10" };
+static const char *fonts[]          = { "HurmitNerdFont:size=10", "Noto Mono:style=Regular:size=30:antialias=true", "monospace:size=10" };
 /*static const char *fonts[]          = { "Jam\-icons:style=Regular", "HurmitNerdFont:size=8", "monospace:size=10"};*/
 /*static const char *fonts[]          = { "-wuncon-siji-medium-r-normal--0-0-75-75-c-0-iso10646-1" "," "HurmitNerdFont:size=8" "," "monospace:size=10"};*/
 /*static const char *fonts[]          = { "monospace:size=10", "Noto Color Emoji:Regular:pixelsize=10:antialias=true:autohint=true"};*/
 /*static char dmenufont[]       = "monospace:size=10";*/
-static char dmenufont[]       = "HurmitNerdFont:size=10";
+static char dmenufont[]       = "HurmitNerdFont:size=12";
 static char normbgcolor[]           = "#222222";
 static char normbordercolor[]       = "#444444";
 static char normfgcolor[]           = "#bbbbbb";
@@ -223,7 +223,7 @@ static Key keys[] = {
 	/* { MODKEY,                       XK_space,  setlayout,      {0} }, */
 
 	 { MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
-	 { MODKEY,                       XK_period, focusmon,       {.i = +1 } }, 
+	 { MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	/* { MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } }, */
 	/* { MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } }, */
 
