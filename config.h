@@ -161,9 +161,10 @@ static Key keys[] = {
         { MODKEY,                       XK_h,           setmfact,       {.f = -0.05} },
         { MODKEY,                       XK_l,           setmfact,       {.f = +0.05} },
 
-	{ MODKEY,			XK_comma,	spawn,		SHCMD("playerctl previous") },
+	{ MODKEY,			XK_F2,	spawn,		SHCMD("playerctl previous") },
+  { MODKEY,     XK_F3,		spawn,		SHCMD("playerctl play-pause") },
 /*	{ MODKEY|ShiftMask,		XK_comma,	spawn,		SHCMD("mpc seek 0%") },*/
-	{ MODKEY,			XK_period,	spawn,		SHCMD("playerctl next") },
+	{ MODKEY,			XK_F4,	spawn,		SHCMD("playerctl next") },
 /*	{ MODKEY|ShiftMask,		XK_period,	spawn,		SHCMD("mpc repeat") },*/
 
 	{ MODKEY,			XK_Page_Up,	shiftview,	{ .i = -1 } },
@@ -172,7 +173,7 @@ static Key keys[] = {
 
 	{ MODKEY,			XK_F1,		spawn,		SHCMD("sysact") },
 	{ MODKEY,			XK_F2,		spawn,		SHCMD("nmcli radio wifi on || nmcli radio wifi off") },
-	{ MODKEY,			XK_F3,		spawn,		SHCMD("displayselect") },
+	// { MODKEY,			XK_F3,		spawn,		SHCMD("displayselect") },
 /*	{ MODKEY,			XK_F4,		spawn,		SHCMD("[ \"$(printf \"No\\nYes\" | dmenu -i -nb darkred -sb red -sf white -nf gray -p \"Hibernate computer?\")\" = Yes ] && sudo -A zzz") },*/
 /*	{ MODKEY,			XK_F5,		xrdb,		{.v = NULL } },*/
 /*	{ MODKEY,			XK_F6,		spawn,		SHCMD("") },*/
@@ -207,7 +208,7 @@ static Key keys[] = {
 	{ 0, XF86XK_AudioPrev,		spawn,		SHCMD("playerctl previous") },
 	{ 0, XF86XK_AudioNext,		spawn,		SHCMD("playerctl next") },
 /*	{ 0, XF86XK_AudioPause,		spawn,		SHCMD("playerctl pause") },*/
-	{ 0, XF86XK_AudioPlay,		spawn,		SHCMD("playerctl play-pause") },
+{ 0, XF86XK_AudioPlay,		spawn,		SHCMD("playerctl play-pause") },
 	{ 0, XF86XK_AudioStop,		spawn,		SHCMD("playerctl stop") },
 /*	{ 0, XF86XK_AudioRewind,	spawn,		SHCMD("notify-sendseek -10") },*/
 /*	{ 0, XF86XK_AudioForward,	spawn,		SHCMD("notify-send seek +10") },*/
@@ -230,7 +231,7 @@ static Key keys[] = {
 
 	 { MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
 	 { MODKEY,                       XK_period, focusmon,       {.i = +1 } },
-         { MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
+   { MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } }, // moves current window to other screen
 	 { MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
 
 /*	 { MODKEY|Mod4Mask,              XK_n,      incrgaps,       {.i = +5 } },
