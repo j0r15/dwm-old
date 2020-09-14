@@ -48,6 +48,7 @@ static const Rule rules[] = {
   	{ "Gimp",     NULL,       NULL,       0,            1,           -1,        50,50,500,500,        3 },
     { "Firefox",  NULL,       NULL,       1 << 8,       0,           -1,        50,50,500,500,        3 },
     { "moolticute",  NULL,    NULL,       1 << 6,       1,           -1,        50,50,500,300,        3 },
+    { "qjackctl",  NULL,    NULL,       1 << 6,       1,           -1,        50,50,500,300,        3 },
     // { "scratchpad",       NULL,       NULL,       0,            1,           -1,        50,50,500,300,        3 },
 };
 
