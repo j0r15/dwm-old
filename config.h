@@ -59,15 +59,10 @@ static const Rule rules[] = {
         { "Spotify",  NULL,       NULL,       1 << 4,       1,           -1 },
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
 	{ "moolticute",  NULL,    NULL,       1 << 6,       1,           -1 },
-
-<<<<<<< HEAD
-=======
-  	{ "Gimp",     NULL,       NULL,       0,            1,           -1,        50,50,500,500,        3 },
     { "Firefox",  NULL,       NULL,       1 << 8,       0,           -1,        50,50,500,500,        3 },
     { "moolticute",  NULL,    NULL,       1 << 6,       1,           -1,        50,50,500,300,        3 },
     { "qjackctl",  NULL,    NULL,       1 << 6,       1,           -1,        50,50,500,300,        3 },
     // { "scratchpad",       NULL,       NULL,       0,            1,           -1,        50,50,500,300,        3 },
->>>>>>> d6b37f305a024d7ee3714a81ca6df160e43956a9
 };
 
 /* layout(s) */
